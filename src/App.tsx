@@ -10,7 +10,7 @@ function App() {
       <p>Pick a subject to get started.</p>
 
       <div className="flex flex-col gap-4">
-        {data.quizzes.map((item: any) => (
+        {data.quizzes.map((item: { title: string; icon: string }) => (
           <Card key={item.title} text={item.title} icon={item.icon} />
         ))}
       </div>
