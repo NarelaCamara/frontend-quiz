@@ -5,9 +5,11 @@ import data from "../src/assets/data.json";
 function App() {
   return (
     <div className="p-6">
-      <h2>Welcome to the</h2>
-      <h1>Frontend Quiz!</h1>
-      <p>Pick a subject to get started.</p>
+      <h2 className="text-[40px]">Welcome to the</h2>
+      <h1 className="text-[40px] font-semibold">Frontend Quiz!</h1>
+      <p className="text-[14px] text-[#626C7F] italic my-4">
+        Pick a subject to get started.
+      </p>
 
       <div className="flex flex-col gap-4">
         {data.quizzes.map((item: { title: string; icon: string }) => (
