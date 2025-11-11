@@ -6,9 +6,9 @@ import { ButtonDarkLightMode } from "./components/button";
 function App() {
   return (
     <div
-      className={`bg-[url(./pattern-background-desktop-dark.svg)] min-h-screen bg-cover`}
+      className={`bg-[url(./pattern-background-mobile-light.svg)] min-h-screen bg-cover min-w-[375px] `}
     >
-      <div className="flex flex-row-reverse ">
+      <div className="flex flex-row-reverse bg-[#EDF1F9] ">
         <ButtonDarkLightMode />
       </div>
       <div className="p-6">
@@ -17,7 +17,7 @@ function App() {
         <p className="text-[14px] text-[#626C7F] italic my-4">
           Pick a subject to get started.
         </p>
-
+        <br className="pb-10" />
         <div className="flex flex-col gap-4">
           {data.quizzes.map((item: { title: string; icon: string }) => (
             <Card key={item.title} text={item.title} icon={item.icon} />
