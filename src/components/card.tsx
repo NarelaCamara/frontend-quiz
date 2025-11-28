@@ -1,9 +1,9 @@
 export const Card = ({ text, icon }: { text: string; icon: string }) => {
   const colorIcon = {
-    html: "bg-[#FF7E35]",
-    css: "bg-[#2FD887]",
-    javascript: "bg-[#306AFF]",
-    accessibility: "bg-[#A729F5]",
+    html: "bg-[#FF7E35]/20",
+    css: "bg-[#2FD887]/20",
+    javascript: "bg-[#306AFF]/20",
+    accessibility: "bg-[#A729F5]/20",
   };
   const bg =
     colorIcon[text.toLocaleLowerCase() as keyof typeof colorIcon] ||
@@ -15,7 +15,7 @@ export const Card = ({ text, icon }: { text: string; icon: string }) => {
       <img
         src={icon}
         alt="icon"
-        className={`p-2 mr-2 md:p-4 md:mr-4 ${bg} opacity-25 rounded-xl`}
+        className={`p-2 mr-2 md:p-4 md:mr-4 ${bg} rounded-xl`}
       />
       <p className="text-[#313E51] text-[14px] md:text-[18px] font-semibold">
         {text}
