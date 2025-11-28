@@ -13,16 +13,19 @@ function App() {
         `}
     >
       <div className="scale-90 sm:scale-100 ">
-        <div className="flex flex-row-reverse  ">
+        <div className="flex flex-row-reverse p-6">
           <ButtonDarkLightMode />
         </div>
-        <div className="p-6">
-          <h2 className="text-[40px]">Welcome to the</h2>
-          <h1 className="text-[40px] font-semibold">Frontend Quiz!</h1>
-          <p className="text-[14px] text-[#626C7F] italic my-4">
-            Pick a subject to get started.
-          </p>
-          <br className="mb-10" />
+        <div className="p-6 flex flex-col xl:flex-row justify-around ">
+          <div>
+            <h2 className="text-[40px]">Welcome to the</h2>
+            <h1 className="text-[40px] font-semibold">Frontend Quiz!</h1>
+            <br className="mb-10 hidden xl:show " />
+            <p className="text-[14px] text-[#626C7F] italic my-4">
+              Pick a subject to get started.
+            </p>
+            <br className="mb-10" />
+          </div>
           <div className="flex flex-col gap-4">
             {data.quizzes.map((item: { title: string; icon: string }) => (
               <Card key={item.title} text={item.title} icon={item.icon} />
