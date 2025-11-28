@@ -6,10 +6,14 @@ import { ButtonDarkLightMode } from "./components/button";
 function App() {
   return (
     <div
-      className={`bg-[url(./pattern-background-mobile-light.svg)] min-h-screen bg-cover max-h-[300px] max-w-[360px] md:w-auto md:h-auto`}
+      className={` 
+        h-[300px] w-[360px] md:w-auto md:h-auto
+        bg-pattern-mobile-light md:bg-pattern-tablet-light xl:bg-pattern-desktop-light min-h-screen bg-cover bg-no-repeat bg-center
+        dark:bg-pattern-mobile-dark md:dark:bg-pattern-tablet-dark xl:dark:bg-pattern-desktop-dark transition-all duration-500 ease-in-out
+        `}
     >
       <div className="scale-90 sm:scale-100 ">
-        <div className="flex flex-row-reverse bg-[#EDF1F9] ">
+        <div className="flex flex-row-reverse  ">
           <ButtonDarkLightMode />
         </div>
         <div className="p-6">
