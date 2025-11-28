@@ -2,22 +2,17 @@ import "./App.css";
 import { Card } from "./components/card";
 import data from "./assets/data.json";
 import { ButtonDarkLightMode } from "./components/button";
-import { useState } from "react";
 
-interface Question {
-  question: string;
-  options: string[];
-  answer: string;
-}
+import { useNavigate } from "react-router";
 
 function App() {
-  const [quiz, setQuiz] = useState<Array<Question> | undefined>();
+  const navigate = useNavigate();
 
   const handleQuizSelection = (quizTitle: string) => {
-    const selectedQuiz = data.quizzes.find(
-      (q) => q.title === quizTitle
-    )?.questions;
-    setQuiz(selectedQuiz);
+    const safeString = encodeURIComponent(quizTitle);
+
+    // Navegar a /quiz pasando el string en el query param 'selection'
+    navigate(`/quiz?selection=${safeString}`);
   };
   return (
     <div
@@ -50,13 +45,6 @@ function App() {
                 handleSelectQuiz={handleQuizSelection}
               />
             ))}
-
-            {quiz &&
-              quiz.map((e: { question: string }) => (
-                <div key={e.question} className="mt-6">
-                  You selected: {e.question}
-                </div>
-              ))}
           </div>
         </div>
       </div>
