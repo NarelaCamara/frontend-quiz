@@ -1,7 +1,3 @@
-
 export const Quiz = () => {
-    return <div>
-      
-        
-  </div>;
+  return <div>nare</div>;
 };
