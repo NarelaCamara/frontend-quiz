@@ -1,25 +1,33 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import data from "../assets/data.json";
-
-interface Question {
-  question: string;
-  options: string[];
-  answer: string;
-}
+import { colorIcon } from "../utils/utils";
+import { ButtonDarkLightMode } from "./button";
 
 export const Quiz = () => {
-  const [quiz, setQuiz] = useState<Array<Question> | undefined>();
+  const [quiz, setQuiz] = useState<{
+    title: string;
+    icon: string;
+    questions: Array<{
+      question: string;
+      options: Array<string>;
+    }>;
+  }>();
 
+  const [step, setStep] = useState<{
+    current: number;
+    total: number;
+  }>({
+    current: 1,
+    total: 10,
+  });
   const [searchParams] = useSearchParams();
-
   const selection = searchParams.get("selection");
 
   const handleFetchQuiz = (quizTitle: string) => {
-    const selectedQuiz = data.quizzes.find(
-      (q) => q.title === quizTitle
-    )?.questions;
-    setQuiz(selectedQuiz);
+    const quiz_selected = data.quizzes.find((q) => q.title === quizTitle);
+    setQuiz(quiz_selected);
+    console.log(quiz_selected);
   };
 
   useEffect(() => {
@@ -27,16 +35,57 @@ export const Quiz = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("Selected quiz from query param:", selection);
+  const bg =
+    colorIcon[quiz?.title.toLocaleLowerCase() as keyof typeof colorIcon] ||
+    "bg-gray-200";
+
+  console.log(step.current, step.total, step.current === step.total);
   return (
-    <div>
-      nare
-      {quiz &&
-        quiz.map((e: { question: string }) => (
-          <div key={e.question} className="mt-6">
-            You selected: {e.question}
-          </div>
-        ))}
+    <div className="scale-90 sm:scale-100 max-w-7xl mx-auto pt-10 pb-10">
+      <div className="flex flex-row-reverse p-6">
+        <ButtonDarkLightMode />
+      </div>
+      <div className="flex flex-row justify-start items-center">
+        <img
+          src={quiz?.icon}
+          alt="icon"
+          className={`p-2 mr-2 xl:p-4 xl:mr-4 ${bg} rounded-xl`}
+        />
+        <p className="text-[#313E51] text-[14px] xl:text-[18px] font-semibold">
+          {selection}
+        </p>
+      </div>
+      <div className=" text-[#626C7F] text-[20px] italic">
+        Question {step.current} of {step.total}
+      </div>
+
+      <div className="text-[#313E51] text-4xl">
+        <p>{quiz?.questions[step.current - 1].question}</p>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        {quiz &&
+          quiz?.questions[step.current - 1].options.map((e) => (
+            <div
+              key={e}
+              className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100`}
+            >
+              {e}
+            </div>
+          ))}
+
+        <button
+          onClick={() =>
+            setStep((prevStep) => ({
+              ...prevStep,
+              current: prevStep.current + 1,
+            }))
+          }
+          className="p-4 mt-10 bg-[#A729F5] text-white rounded-lg  cursor-pointer"
+        >
+          {step.current === step.total ? "Submit Answer" : "Next Question"}
+        </button>
+      </div>
     </div>
   );
 };
