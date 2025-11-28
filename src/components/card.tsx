@@ -10,7 +10,7 @@ export const Card = ({ text, icon }: { text: string; icon: string }) => {
     "bg-gray-100";
   return (
     <div
-      className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px]`}
+      className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100`}
     >
       <img
         src={icon}
