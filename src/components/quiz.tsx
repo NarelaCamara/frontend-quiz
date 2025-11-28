@@ -3,8 +3,10 @@ import { useSearchParams } from "react-router";
 import data from "../assets/data.json";
 import { colorIcon } from "../utils/utils";
 import { ButtonDarkLightMode } from "./button";
+import { Option } from "./option";
 
 export const Quiz = () => {
+  const alfabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   const [quiz, setQuiz] = useState<{
     title: string;
     icon: string;
@@ -65,14 +67,16 @@ export const Quiz = () => {
 
       <div className="flex flex-col gap-4">
         {quiz &&
-          quiz?.questions[step.current - 1].options.map((e) => (
-            <div
-              key={e}
-              className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100`}
-            >
-              {e}
-            </div>
-          ))}
+          quiz?.questions[step.current - 1].options.map((e, index) => {
+            return (
+              <Option
+                key={e}
+                text={e}
+                letter={alfabet[index]}
+                isCorrect={false}
+              />
+            );
+          })}
 
         <button
           onClick={() =>
