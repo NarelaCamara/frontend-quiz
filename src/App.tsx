@@ -12,7 +12,7 @@ function App() {
         dark:bg-pattern-mobile-dark md:dark:bg-pattern-tablet-dark xl:dark:bg-pattern-desktop-dark transition-all duration-500 ease-in-out
         `}
     >
-      <div className="scale-90 sm:scale-100 ">
+      <div className="scale-90 sm:scale-100 max-w-7xl mx-auto pt-10 pb-10">
         <div className="flex flex-row-reverse p-6">
           <ButtonDarkLightMode />
         </div>
