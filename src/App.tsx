@@ -7,8 +7,8 @@ function App() {
   return (
     <div
       className={` 
-        h-[300px] w-[360px] md:w-auto md:h-auto
-        bg-pattern-mobile-light md:bg-pattern-tablet-light xl:bg-pattern-desktop-light min-h-screen bg-cover bg-no-repeat bg-center
+        min-h-[300px] min-w-[360px] md:min-w-auto md:min-h-auto
+        bg-pattern-mobile-light md:bg-pattern-tablet-light xl:bg-pattern-desktop-light bg-cover bg-no-repeat bg-center
         dark:bg-pattern-mobile-dark md:dark:bg-pattern-tablet-dark xl:dark:bg-pattern-desktop-dark transition-all duration-500 ease-in-out
         `}
     >
