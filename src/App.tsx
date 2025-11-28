@@ -2,8 +2,23 @@ import "./App.css";
 import { Card } from "./components/card";
 import data from "./assets/data.json";
 import { ButtonDarkLightMode } from "./components/button";
+import { useState } from "react";
+
+interface Question {
+  question: string;
+  options: string[];
+  answer: string;
+}
 
 function App() {
+  const [quiz, setQuiz] = useState<Array<Question> | undefined>();
+
+  const handleQuizSelection = (quizTitle: string) => {
+    const selectedQuiz = data.quizzes.find(
+      (q) => q.title === quizTitle
+    )?.questions;
+    setQuiz(selectedQuiz);
+  };
   return (
     <div
       className={` 
@@ -28,8 +43,20 @@ function App() {
           </div>
           <div className="flex flex-col gap-4">
             {data.quizzes.map((item: { title: string; icon: string }) => (
-              <Card key={item.title} text={item.title} icon={item.icon} />
+              <Card
+                key={item.title}
+                text={item.title}
+                icon={item.icon}
+                handleSelectQuiz={handleQuizSelection}
+              />
             ))}
+
+            {quiz &&
+              quiz.map((e: { question: string }) => (
+                <div key={e.question} className="mt-6">
+                  You selected: {e.question}
+                </div>
+              ))}
           </div>
         </div>
       </div>
