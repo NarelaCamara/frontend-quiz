@@ -1,16 +1,16 @@
 import { useNavigate } from "react-router";
+import type { IQuiz, IStep } from "../utils/types";
 
 export const Scored = ({
   score,
   bg,
-  icon,
-  title,
-  total,
+  quiz,
+  step,
 }: {
   score: number;
   bg: string;
-  icon: string;
-  title: string;
+  quiz: IQuiz;
+  step: IStep;
   total: number;
 }) => {
   const navigate = useNavigate();
@@ -24,16 +24,16 @@ export const Scored = ({
         <div
           className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px]`}
         >
-          <p>{title}</p>
+          <p>{quiz.title}</p>
           <img
-            src={icon}
+            src={quiz.icon}
             alt="icon"
             className={`p-2 mr-2 xl:p-4 xl:mr-4 ${bg} rounded-xl`}
           />
           <p className="text-[#313E51] text-[144px] font-semibold">{score}</p>
 
           <div className=" text-[#626C7F] text-[20px] italic">
-            out of {total}
+            out of {step.total}
           </div>
         </div>
 
