@@ -13,6 +13,7 @@ export const Quiz = () => {
     questions: Array<{
       question: string;
       options: Array<string>;
+      answer: string;
     }>;
   }>();
 
@@ -73,7 +74,7 @@ export const Quiz = () => {
                 key={e}
                 text={e}
                 letter={alfabet[index]}
-                isCorrect={false}
+                isCorrect={quiz?.questions[step.current - 1].answer === e}
               />
             );
           })}
