@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import type { IQuiz, IStep } from "../utils/types";
-import { colorIcon } from "../utils/utils";
+import { Icon } from "./icon";
 
 export const Scored = ({
   score,
@@ -8,15 +8,10 @@ export const Scored = ({
   step,
 }: {
   score: number;
-  bg: string;
   quiz: IQuiz;
   step: IStep;
-  total: number;
 }) => {
   const navigate = useNavigate();
-  const bg =
-    colorIcon[quiz.title.toLocaleLowerCase() as keyof typeof colorIcon] ||
-    "bg-gray-100";
 
   return (
     <div className="p-6 flex flex-col xl:flex-row justify-around ">
@@ -29,11 +24,7 @@ export const Scored = ({
           className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px]`}
         >
           <p>{quiz.title}</p>
-          <img
-            src={quiz.icon}
-            alt="icon"
-            className={`p-2 mr-2 xl:p-4 xl:mr-4 ${bg} rounded-xl`}
-          />
+          <Icon icon={quiz?.icon} title={quiz?.title} />
           <p className="text-[#313E51] text-[144px] font-semibold">{score}</p>
 
           <div className=" text-[#626C7F] text-[20px] italic">

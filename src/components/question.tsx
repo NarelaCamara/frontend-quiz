@@ -1,32 +1,32 @@
+import { useState } from "react";
 import { Option } from "./option";
+import type { IQuiz, IStep } from "../utils/types";
+import { AnswerState } from "../utils/utils";
 
 export const Question = ({
   step,
-  setStep,
   quiz,
-  handleSetScore,
-  setEndQuiz,
-  clicked,
+  setStep,
+  sumCorrect,
 }: {
-  step: { current: number; total: number };
-  setStep: React.Dispatch<
-    React.SetStateAction<{ current: number; total: number }>
-  >;
-  quiz: {
-    title: string;
-    icon: string;
-    questions: Array<{
-      question: string;
-      options: Array<string>;
-      answer: string;
-    }>;
-  };
-  handleSetScore: (isCorrect: boolean) => void;
-  setEndQuiz: React.Dispatch<React.SetStateAction<boolean>>;
-
-  clicked: boolean;
+  step: IStep;
+  quiz: IQuiz;
+  setStep: (step: IStep) => void;
+  sumCorrect: (bool: boolean) => void;
 }) => {
   const alfabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+
+  const [stateQuestion, setStateQuestion] = useState({
+    state: AnswerState.SUBMITED,
+    selectedAnswer: "",
+  });
+
+  const handleOptionClick = (answer: string) => {
+    setStateQuestion({
+      ...stateQuestion,
+      selectedAnswer: answer,
+    });
+  };
 
   return (
     <div>
@@ -44,28 +44,44 @@ export const Question = ({
             return (
               <Option
                 key={e}
-                text={e}
+                answer={e}
                 letter={alfabet[index]}
-                handleSetScore={handleSetScore}
-                isCorrect={quiz?.questions[step.current - 1].answer === e}
+                stateQuestion={stateQuestion}
+                correctAnswer={quiz.questions[step.current - 1].answer}
+                handleOptionClick={handleOptionClick}
               />
             );
           })}
 
         <button
           onClick={() => {
-            setStep((prevStep) => ({
-              ...prevStep,
-              current: prevStep.current + 1,
-            }));
-
-            setEndQuiz(step.current === step.total);
+            if (stateQuestion.state === AnswerState.SUBMITED) {
+              setStateQuestion({
+                ...stateQuestion,
+                state: AnswerState.NEXT,
+              });
+            } else {
+              sumCorrect(
+                stateQuestion.selectedAnswer ===
+                  quiz.questions[step.current - 1].answer
+              );
+              setStep({
+                ...step,
+                current: step.current + 1,
+              });
+              setStateQuestion({
+                state: AnswerState.SUBMITED,
+                selectedAnswer: "",
+              });
+            }
           }}
           className={`p-4 mt-10 ${
-            clicked ? "bg-[#A729F5]  cursor-pointer" : "bg-[#A729F5]/50"
+            stateQuestion.selectedAnswer !== ""
+              ? "bg-[#A729F5]  cursor-pointer"
+              : "bg-[#A729F5]/50"
           } text-white rounded-lg `}
         >
-          {step.current === step.total ? "Submit Answer" : "Next Question"}
+          {stateQuestion.state}
         </button>
       </div>
     </div>

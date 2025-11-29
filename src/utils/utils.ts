@@ -4,3 +4,8 @@ export const colorIcon = {
   javascript: "bg-[#306AFF]/20",
   accessibility: "bg-[#A729F5]/20",
 };
+
+export const AnswerState = {
+  SUBMITED: "Submit Answer",
+  NEXT: "Next Question",
+};

@@ -12,4 +12,10 @@ export interface IQuestion {
 export interface IStep {
   current: number;
   total: number;
+  end: boolean;
+}
+
+export interface IStateQuestion {
+  state: string;
+  selectedAnswer: string;
 }
