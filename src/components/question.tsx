@@ -6,7 +6,6 @@ export const Question = ({
   quiz,
   handleSetScore,
   setEndQuiz,
-
   clicked,
 }: {
   step: { current: number; total: number };

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router";
 import type { IQuiz, IStep } from "../utils/types";
+import { colorIcon } from "../utils/utils";
 
 export const Scored = ({
   score,
-  bg,
   quiz,
   step,
 }: {
@@ -14,6 +14,10 @@ export const Scored = ({
   total: number;
 }) => {
   const navigate = useNavigate();
+  const bg =
+    colorIcon[quiz.title.toLocaleLowerCase() as keyof typeof colorIcon] ||
+    "bg-gray-100";
+
   return (
     <div className="p-6 flex flex-col xl:flex-row justify-around ">
       <div>
