@@ -6,15 +6,20 @@ export const Option = ({
   letter,
   text,
   isCorrect,
+  handleSetScore,
 }: {
   text: string;
   letter: string;
   isCorrect: boolean;
+  handleSetScore: (bool: boolean) => void;
 }) => {
   const [selected, setSelected] = useState(false);
   return (
     <div
-      onClick={() => setSelected(true)}
+      onClick={() => {
+        setSelected(true);
+        handleSetScore(isCorrect);
+      }}
       className={`${
         !selected
           ? ""

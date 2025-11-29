@@ -4,6 +4,7 @@ import data from "../assets/data.json";
 import { colorIcon } from "../utils/utils";
 import { ButtonDarkLightMode } from "./button";
 import { Option } from "./option";
+import { Scored } from "./scored";
 
 export const Quiz = () => {
   const alfabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
@@ -26,11 +27,18 @@ export const Quiz = () => {
   });
   const [searchParams] = useSearchParams();
   const selection = searchParams.get("selection");
+  const [clicked, setClicked] = useState(false);
+  const [score, setScore] = useState(0);
+  const [endQuiz, setEndQuiz] = useState(false);
 
   const handleFetchQuiz = (quizTitle: string) => {
     const quiz_selected = data.quizzes.find((q) => q.title === quizTitle);
     setQuiz(quiz_selected);
-    console.log(quiz_selected);
+  };
+
+  const handleSetScore = (isCorrect: boolean) => {
+    setScore(isCorrect ? score + 1 : score);
+    setClicked(true);
   };
 
   useEffect(() => {
@@ -58,39 +66,59 @@ export const Quiz = () => {
           {selection}
         </p>
       </div>
-      <div className=" text-[#626C7F] text-[20px] italic">
-        Question {step.current} of {step.total}
-      </div>
 
-      <div className="text-[#313E51] text-4xl">
-        <p>{quiz?.questions[step.current - 1].question}</p>
-      </div>
+      {!endQuiz && (
+        <div>
+          <div className=" text-[#626C7F] text-[20px] italic">
+            Question {step.current} of {step.total}
+          </div>
 
-      <div className="flex flex-col gap-4">
-        {quiz &&
-          quiz?.questions[step.current - 1].options.map((e, index) => {
-            return (
-              <Option
-                key={e}
-                text={e}
-                letter={alfabet[index]}
-                isCorrect={quiz?.questions[step.current - 1].answer === e}
-              />
-            );
-          })}
+          <div className="text-[#313E51] text-4xl">
+            <p>{quiz?.questions[step.current - 1].question}</p>
+          </div>
 
-        <button
-          onClick={() =>
-            setStep((prevStep) => ({
-              ...prevStep,
-              current: prevStep.current + 1,
-            }))
-          }
-          className="p-4 mt-10 bg-[#A729F5] text-white rounded-lg  cursor-pointer"
-        >
-          {step.current === step.total ? "Submit Answer" : "Next Question"}
-        </button>
-      </div>
+          <div className="flex flex-col gap-4">
+            {quiz &&
+              quiz?.questions[step.current - 1].options.map((e, index) => {
+                return (
+                  <Option
+                    key={e}
+                    text={e}
+                    letter={alfabet[index]}
+                    handleSetScore={handleSetScore}
+                    isCorrect={quiz?.questions[step.current - 1].answer === e}
+                  />
+                );
+              })}
+
+            <button
+              onClick={() => {
+                setStep((prevStep) => ({
+                  ...prevStep,
+                  current: prevStep.current + 1,
+                }));
+
+                setEndQuiz(step.current === step.total);
+              }}
+              className={`p-4 mt-10 ${
+                clicked ? "bg-[#A729F5]  cursor-pointer" : "bg-[#A729F5]/50"
+              } text-white rounded-lg `}
+            >
+              {step.current === step.total ? "Submit Answer" : "Next Question"}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {endQuiz && (
+        <Scored
+          score={score}
+          bg={bg}
+          icon={quiz?.icon}
+          title={quiz?.title}
+          total={step.total}
+        />
+      )}
     </div>
   );
 };
