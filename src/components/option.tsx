@@ -19,9 +19,11 @@ export const Option = ({
   return (
     <div
       onClick={() => {
-        handleOptionClick(
-          answer === stateQuestion.selectedAnswer ? "" : answer
-        );
+        if (stateQuestion.state === AnswerState.SUBMITED) {
+          handleOptionClick(
+            answer === stateQuestion.selectedAnswer ? "" : answer
+          );
+        }
       }}
       className={`${
         stateQuestion.state === AnswerState.SUBMITED &&
@@ -33,39 +35,41 @@ export const Option = ({
         stateQuestion.state === AnswerState.NEXT &&
         stateQuestion.selectedAnswer === answer
           ? correctAnswer === stateQuestion.selectedAnswer
-            ? "border-2 border-green-500"
-            : "border-2 border-red-500"
+            ? "border-2 border-green-500 text-white"
+            : "border-2 border-red-500 text-white"
           : ""
       }
-       p-4  bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100`}
+       p-4  bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] ${
+         stateQuestion.state === AnswerState.SUBMITED
+           ? "hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100"
+           : ""
+       } `}
     >
       <p
-        className={`          
+        className={`   bg-[#F4F6FA] text-[#626C7F]        
           ${
             stateQuestion.state === AnswerState.SUBMITED &&
             stateQuestion.selectedAnswer === answer
-              ? "bg-violet-500"
-              : "bg-gray-500"
+              ? "bg-violet-500 text-white"
+              : ""
           }
           ${
-            stateQuestion.state === AnswerState.NEXT
+            stateQuestion.state === AnswerState.NEXT &&
+            stateQuestion.selectedAnswer === answer
               ? correctAnswer === stateQuestion.selectedAnswer
-                ? "bg-green-500"
-                : "bg-red-500"
+                ? "bg-green-500 text-white"
+                : "bg-red-500 text-white"
               : ""
           }
-          ${
-            stateQuestion.state === AnswerState.NEXT
-              ? correctAnswer === answer
-                ? "bg-green-500"
-                : "bg-red-500"
-              : ""
-          } py-2 mr-2 px-4 text-[18px] text-white  rounded-xl`}
+         py-2 mr-2 px-4 text-[18px]  rounded-xl`}
       >
         {letter}
       </p>
 
-      {answer}
+      <div className={`text-[#313E51] text-[28px]] font-semibold`}>
+        {" "}
+        {answer}
+      </div>
 
       {stateQuestion.state === AnswerState.NEXT &&
         (correctAnswer === answer ||
