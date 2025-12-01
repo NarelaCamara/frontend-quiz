@@ -60,6 +60,11 @@ export const Question = ({
                 ...stateQuestion,
                 state: AnswerState.NEXT,
               });
+
+              setStep({
+                ...step,
+                end: step.current === step.total,
+              });
             } else {
               sumCorrect(
                 stateQuestion.selectedAnswer ===
