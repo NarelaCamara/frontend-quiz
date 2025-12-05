@@ -43,14 +43,14 @@ export const Quiz = () => {
       {quiz && (
         <>
           <div className="scale-90 sm:scale-100 max-w-7xl mx-auto pt-10 pb-10">
-            <div className="flex flex-row-reverse p-6">
-              <ButtonDarkLightMode />
-            </div>
-            <div className="flex flex-row justify-start items-center">
+            <div className="flex flex-row p-2 items-center gap-4">
               <Icon icon={quiz?.icon} title={quiz?.title} />
               <p className="text-[#313E51] text-[14px] xl:text-[18px] font-semibold">
                 {selection}
               </p>
+              <div className="flex grow  justify-end">
+                <ButtonDarkLightMode />
+              </div>
             </div>
 
             {!step.end && (
@@ -62,7 +62,9 @@ export const Quiz = () => {
               />
             )}
 
-            {step.end && <Scored score={score} quiz={quiz} step={step} />}
+            {step.end && (
+              <Scored score={score} quiz={quiz} step={step} setStep={setStep} />
+            )}
           </div>
         </>
       )}
