@@ -37,7 +37,7 @@ export const Scored = ({
         </div>
 
         <button
-          className={`p-4 mt-10 ${"bg-[#A729F5]  "} w-full text-white rounded-lg cursor-pointer`}
+          className={`p-4 mt-10 bg-[#A729F5] w-full text-white rounded-lg cursor-pointer`}
           onClick={() => {
             setStep({ current: 1, total: step.total, end: false });
           }}
