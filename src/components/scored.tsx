@@ -16,18 +16,24 @@ export const Scored = ({
   const navigate = useNavigate();
 
   return (
-    <div className="p-6 flex flex-col xl:flex-row justify-around min-w-[300px]">
+    <div className="flex flex-row justify-center gap-4 p-[2%]">
       <div>
-        <h2 className="text-[40px]">Quiz completed</h2>
-        <h1 className="text-[40px] font-semibold">You scored...</h1>
+        <h2 className="text-[54px] font-extralight text-[#313E51]">
+          Quiz completed
+        </h2>
+        <h1 className="text-[54px] font-medium">You scored...</h1>
       </div>
-      <div className="">
+      <div className="w-[128px]"></div>
+
+      <div className="flex flex-col">
         <div
-          className={`p-2 xl:p-4 bg-white  rounded-xl shadow-md flex flex-col items-center`}
+          className={`p-12 bg-white  rounded-xl shadow-md  flex flex-col items-center   `}
         >
-          <div className="flex flex-row p-2 items-center gap-4">
+          <div className="flex flex-row p-2 items-center gap-4 w-full">
             <Icon icon={quiz?.icon} title={quiz?.title} />
-            <p>{quiz.title}</p>
+            <p className="text-[#313E51] text-[28px] font-medium">
+              {quiz.title}
+            </p>
           </div>
           <p className="text-[#313E51] text-[144px] font-semibold">{score}</p>
 
@@ -37,7 +43,7 @@ export const Scored = ({
         </div>
 
         <button
-          className={`p-4 mt-10 bg-[#A729F5] w-full text-white rounded-lg cursor-pointer`}
+          className={`p-4 mt-12  bg-[#A729F5] w-full text-white rounded-lg cursor-pointer`}
           onClick={() => {
             setStep({ current: 1, total: step.total, end: false });
           }}
@@ -46,7 +52,7 @@ export const Scored = ({
         </button>
 
         <button
-          className={`p-4 mt-10 ${"bg-white  "} border-2 border-[#A729F5] w-full text-[#A729F5] rounded-lg cursor-pointer`}
+          className={`p-4 mt-4 ${"bg-white  "} border-2 border-[#A729F5] w-full text-[#A729F5] rounded-lg cursor-pointer`}
           onClick={() => navigate("/")}
         >
           Back to Home

@@ -54,8 +54,9 @@ export const Question = ({
   };
 
   return (
-    <div className="flex flex-row gap-4">
+    <div className="flex flex-row justify-center gap-4 p-[2%]">
       <SectionQuestion step={step} quiz={quiz} />
+      <div className="w-[128px]"></div>
 
       <SectionAnswer
         handleButtonNext={handleButtonNext}

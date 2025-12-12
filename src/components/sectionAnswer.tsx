@@ -16,7 +16,7 @@ export const SectionAnswer = ({
 }) => {
   const alfabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
   return (
-    <div className="flex flex-col content-center gap-4">
+    <div className="flex flex-col justify-center items-center  gap-4">
       {quiz &&
         quiz?.questions[step.current - 1].options.map((e, index) => {
           return (
@@ -33,7 +33,7 @@ export const SectionAnswer = ({
 
       <button
         onClick={handleButtonNext}
-        className={`p-4 mt-10 ${
+        className={`p-4 mt-10 w-full ${
           stateQuestion.selectedAnswer !== ""
             ? "bg-[#A729F5]  cursor-pointer"
             : "bg-[#A729F5]/50"
