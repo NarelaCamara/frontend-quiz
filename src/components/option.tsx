@@ -25,7 +25,7 @@ export const Option = ({
           );
         }
       }}
-      className={`${
+      className={`mx-4 w-full ${
         stateQuestion.state === AnswerState.SUBMITED &&
         stateQuestion.selectedAnswer === answer
           ? "border-2 border-violet-500"
@@ -39,7 +39,7 @@ export const Option = ({
             : "border-2 border-red-500 text-white"
           : ""
       }
-       p-4  bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] ${
+       p-4  bg-white flex flex-row items-center rounded-xl shadow-md  ${
          stateQuestion.state === AnswerState.SUBMITED
            ? "hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100"
            : ""

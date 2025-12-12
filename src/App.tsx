@@ -1,4 +1,3 @@
-import "./App.css";
 import { Card } from "./components/card";
 import data from "./assets/data.json";
 import { ButtonDarkLightMode } from "./components/button";
