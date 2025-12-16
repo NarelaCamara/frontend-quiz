@@ -28,28 +28,31 @@ export const Question = ({
   };
 
   const handleButtonNext = () => {
-    if (stateQuestion.state === AnswerState.SUBMITED) {
-      setStateQuestion({
-        ...stateQuestion,
-        state: AnswerState.NEXT,
-      });
+    if (stateQuestion.selectedAnswer !== "") {
+      if (stateQuestion.state === AnswerState.SUBMITED) {
+        setStateQuestion({
+          ...stateQuestion,
+          state: AnswerState.NEXT,
+        });
 
-      setStep({
-        ...step,
-        end: step.current === step.total,
-      });
-    } else {
-      sumCorrect(
-        stateQuestion.selectedAnswer === quiz.questions[step.current - 1].answer
-      );
-      setStep({
-        ...step,
-        current: step.current + 1,
-      });
-      setStateQuestion({
-        state: AnswerState.SUBMITED,
-        selectedAnswer: "",
-      });
+        setStep({
+          ...step,
+          end: step.current === step.total,
+        });
+      } else {
+        sumCorrect(
+          stateQuestion.selectedAnswer ===
+            quiz.questions[step.current - 1].answer
+        );
+        setStep({
+          ...step,
+          current: step.current + 1,
+        });
+        setStateQuestion({
+          state: AnswerState.SUBMITED,
+          selectedAnswer: "",
+        });
+      }
     }
   };
 
