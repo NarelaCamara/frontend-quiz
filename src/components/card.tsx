@@ -12,7 +12,7 @@ export const Card = ({
   return (
     <div
       onClick={() => handleSelectQuiz(text)}
-      className={`p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md min-w-[564px] hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100`}
+      className={`w-full min-w-[300px] p-2 xl:p-4 bg-white flex flex-row items-center rounded-xl shadow-md hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100`}
     >
       <Icon icon={icon} title={text} />
       <p className="text-[#313E51] text-[14px] xl:text-[18px] font-semibold">
