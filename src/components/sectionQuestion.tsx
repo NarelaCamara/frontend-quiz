@@ -1,4 +1,5 @@
 import type { IQuiz, IStep } from "../utils/types";
+import { Timer } from "./timer";
 
 export const SectionQuestion = ({
   step,
@@ -16,6 +17,8 @@ export const SectionQuestion = ({
       <div className="text-[#313E51] text-4xl max-w-[465px] font-medium">
         <p>{quiz?.questions[step.current - 1].question}</p>
       </div>
+
+      <Timer time={10} />
     </div>
   );
 };
