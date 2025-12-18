@@ -1,12 +1,21 @@
 import { useState } from "react";
 
-export const Timer = ({ time }: { time: number }) => {
+export const Timer = ({
+  time,
+  setTimeFinished,
+}: {
+  time: number;
+  setTimeFinished: (bool: boolean) => void;
+}) => {
   const [timeCurrent, setTimeCurrent] = useState(0);
 
   setTimeout(function () {
     if (timeCurrent !== time) {
       // 1. Calculamos el porcentaje
       setTimeCurrent(timeCurrent + 1);
+    }
+    if (time === timeCurrent) {
+      setTimeFinished(true);
     }
   }, 1000);
 
