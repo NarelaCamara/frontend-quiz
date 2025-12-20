@@ -14,12 +14,12 @@ export const Question = ({
   quiz: IQuiz;
   setStep: (step: IStep) => void;
   sumCorrect: (bool: boolean) => void;
-}) => {
-  const [timeFinished, setTimeFinished] = useState(false);
-
+  }) => {
+  
   const [stateQuestion, setStateQuestion] = useState({
     state: AnswerState.SUBMITED,
     selectedAnswer: "",
+    timerFinished: false,
   });
 
   const handleOptionClick = (answer: string) => {
@@ -32,7 +32,7 @@ export const Question = ({
   const handleButtonNext = () => {
     if (
       stateQuestion.selectedAnswer !== "" &&
-      !timeFinished &&
+      !stateQuestion.timerFinished &&
       stateQuestion.state === AnswerState.SUBMITED
     ) {
       setStateQuestion({
@@ -55,33 +55,34 @@ export const Question = ({
       setStateQuestion({
         state: AnswerState.SUBMITED,
         selectedAnswer: "",
+        timerFinished: false,
       });
     }
   };
 
   useEffect(() => {
-    if (timeFinished) {
+    if (stateQuestion.timerFinished) {
       setStateQuestion({
         ...stateQuestion,
         state: AnswerState.NEXT,
       });
     }
-  }, [timeFinished]);
+  }, [stateQuestion]);
 
   return (
     <div className="flex flex-row justify-center gap-4 p-[2%]">
       <SectionQuestion
         step={step}
         quiz={quiz}
-        setTimeFinished={setTimeFinished}
+        stateQuestion={stateQuestion}
+        setStateQuestion={setStateQuestion}
       />
       <div className="w-[128px]"></div>
 
       <SectionAnswer
         handleButtonNext={handleButtonNext}
-        stateQuestion={stateQuestion}
         handleOptionClick={handleOptionClick}
-        timeFinished={timeFinished}
+        stateQuestion={stateQuestion}
         quiz={quiz}
         step={step}
       />

@@ -9,10 +9,10 @@ function App() {
 
   const handleQuizSelection = (quizTitle: string) => {
     const safeString = encodeURIComponent(quizTitle);
-
     // Navegar a /quiz pasando el string en el query param 'selection'
     navigate(`/quiz?selection=${safeString}`);
   };
+
   return (
     <div
       className={`bg-pattern-mobile-light md:bg-pattern-tablet-light xl:bg-pattern-desktop-light bg-cover bg-no-repeat bg-center

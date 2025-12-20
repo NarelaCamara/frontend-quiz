@@ -7,8 +7,8 @@ export const Option = ({
   letter,
   answer,
   correctAnswer,
-  handleOptionClick,
   stateQuestion,
+  handleOptionClick,
 }: {
   letter: string;
   answer: string;

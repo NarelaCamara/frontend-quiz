@@ -3,23 +3,21 @@ import { AnswerState } from "../utils/utils";
 import { Option } from "./option";
 
 export const SectionAnswer = ({
-  handleButtonNext,
-  timeFinished,
   stateQuestion,
-  handleOptionClick,
   quiz,
   step,
+  handleButtonNext,
+  handleOptionClick,
 }: {
-  timeFinished: boolean;
-  handleButtonNext: () => void;
-  stateQuestion: IStateQuestion;
-  handleOptionClick: (answer: string) => void;
   quiz: IQuiz;
   step: IStep;
+  stateQuestion: IStateQuestion;
+  handleButtonNext: () => void;
+  handleOptionClick: (answer: string) => void;
 }) => {
   const colorButton = () => {
     if (stateQuestion.state === AnswerState.SUBMITED) {
-      return stateQuestion.selectedAnswer !== "" || timeFinished;
+      return stateQuestion.selectedAnswer !== "" || stateQuestion.timerFinished;
     } else {
       return stateQuestion.state === AnswerState.NEXT;
     }

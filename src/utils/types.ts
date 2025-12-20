@@ -9,6 +9,7 @@ export interface IQuestion {
   options: Array<string>;
   answer: string;
 }
+
 export interface IStep {
   current: number;
   total: number;
@@ -18,4 +19,5 @@ export interface IStep {
 export interface IStateQuestion {
   state: string;
   selectedAnswer: string;
+  timerFinished: boolean;
 }

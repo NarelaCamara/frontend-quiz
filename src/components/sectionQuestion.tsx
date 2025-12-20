@@ -1,14 +1,16 @@
-import type { IQuiz, IStep } from "../utils/types";
+import type { IQuiz, IStateQuestion, IStep } from "../utils/types";
 import { Timer } from "./timer";
 
 export const SectionQuestion = ({
   step,
   quiz,
-  setTimeFinished,
+  stateQuestion,
+  setStateQuestion,
 }: {
   step: IStep;
   quiz: IQuiz;
-  setTimeFinished: (bool: boolean) => void;
+  stateQuestion: IStateQuestion;
+  setStateQuestion: (state: IStateQuestion) => void;
 }) => {
   return (
     <div className="flex flex-col items-start">
@@ -20,7 +22,13 @@ export const SectionQuestion = ({
         <p>{quiz?.questions[step.current - 1].question}</p>
       </div>
 
-      <Timer setTimeFinished={setTimeFinished} time={10} />
+      <div className="w-full h-full">
+        <Timer
+          time={10}
+          stateQuestion={stateQuestion}
+          setStateQuestion={setStateQuestion}
+        />
+      </div>
     </div>
   );
 };

@@ -13,18 +13,6 @@ export const Quiz = () => {
 
   const [quiz, setQuiz] = useState<IQuiz>();
 
-  const handleFetchQuiz = (quizTitle: string) => {
-    const quiz_selected = data.quizzes.find((q) => q.title === quizTitle);
-    setQuiz(quiz_selected);
-  };
-
-  useEffect(() => {
-    handleFetchQuiz(selection || "");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  /******/
-
   const [step, setStep] = useState<IStep>({
     current: 1,
     total: 10,
@@ -33,9 +21,19 @@ export const Quiz = () => {
 
   const [score, setScore] = useState(0);
 
+  const handleFetchQuiz = (quizTitle: string) => {
+    const quiz_selected = data.quizzes.find((q) => q.title === quizTitle);
+    setQuiz(quiz_selected);
+  };
+
   const sumCorrect = (isCorrect: boolean) => {
     setScore(isCorrect ? score + 1 : score);
   };
+
+  useEffect(() => {
+    handleFetchQuiz(selection || "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
