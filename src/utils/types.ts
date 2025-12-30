@@ -19,5 +19,7 @@ export interface IStep {
 export interface IStateQuestion {
   state: string;
   selectedAnswer: string;
-  timerFinished: boolean;
+  stateTime: ITimer;
 }
+
+export type ITimer = "START" | "END" | "PAUSE";

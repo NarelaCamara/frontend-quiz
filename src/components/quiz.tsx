@@ -42,7 +42,7 @@ export const Quiz = () => {
         <>
           <div className="scale-90 sm:scale-100 max-w-7xl mx-auto pt-10 pb-10">
             <div className="flex flex-row p-2 items-center gap-4">
-              <Icon icon={quiz?.icon} title={quiz?.title} />
+              <Icon icon={quiz.icon} title={quiz.title} />
               <p className="text-[#313E51] text-[14px] xl:text-[18px] font-semibold">
                 {selection}
               </p>

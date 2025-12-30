@@ -17,7 +17,10 @@ export const SectionAnswer = ({
 }) => {
   const colorButton = () => {
     if (stateQuestion.state === AnswerState.SUBMITED) {
-      return stateQuestion.selectedAnswer !== "" || stateQuestion.timerFinished;
+      return (
+        stateQuestion.selectedAnswer !== "" ||
+        stateQuestion.stateTime !== "START"
+      );
     } else {
       return stateQuestion.state === AnswerState.NEXT;
     }
