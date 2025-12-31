@@ -14,11 +14,7 @@ function App() {
   };
 
   return (
-    <div
-      className={`bg-pattern-mobile-light md:bg-pattern-tablet-light xl:bg-pattern-desktop-light bg-cover bg-no-repeat bg-center
-        dark:bg-pattern-mobile-dark md:dark:bg-pattern-tablet-dark xl:dark:bg-pattern-desktop-dark 
-        `}
-    >
+    <div>
       <div className="scale-90 sm:scale-100 min-w-[360px]  sm:p-0 md:p-12 lg:p-24 m-12">
         <ButtonDarkLightMode />
 

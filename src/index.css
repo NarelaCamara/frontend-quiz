@@ -2,35 +2,43 @@
 @tailwind utilities;
 
 @layer components {
-  .bg-pattern-mobile-light {
+  .bg-pattern {
     /* La función url() automáticamente resolverá la ruta al archivo SVG. */
     background-image: url("./pattern-background-mobile-light.svg");
-    background-size: cover; /* O el valor que necesites */
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center;
+    background-color: aquamarine;
     /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
   }
-  .bg-pattern-tablet-light {
-    /* La función url() automáticamente resolverá la ruta al archivo SVG. */
-    background-image: url("./pattern-background-tablet-light.svg");
-    background-size: cover; /* O el valor que necesites */
-    background-repeat: no-repeat;
-    background-position: center;
-    /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
+
+  /* Tablet (desde 768px) */
+  @media (min-width: 768px) {
+    .bg-pattern {
+      /* La función url() automáticamente resolverá la ruta al archivo SVG. */
+      background-image: url("./pattern-background-tablet-light.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: beige;
+      /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
+    }
   }
-  .bg-pattern-desktop-light {
-    /* La función url() automáticamente resolverá la ruta al archivo SVG. */
-    background-image: url("./pattern-background-desktop-light.svg");
-    background-size: cover; /* O el valor que necesites */
-    background-repeat: no-repeat;
-    background-position: center;
-    /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
+
+  /* Desktop (desde 1024px) */
+  @media (min-width: 1024px) {
+    .bg-pattern {
+      /* La función url() automáticamente resolverá la ruta al archivo SVG. */
+      background-image: url("./pattern-background-desktop-light.svg");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-color: brown;
+      /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
+    }
   }
 
   .bg-pattern-mobile-dark {
     /* La función url() automáticamente resolverá la ruta al archivo SVG. */
     background-image: url("./pattern-background-mobile-dark.svg");
-    background-size: cover; /* O el valor que necesites */
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
@@ -38,7 +46,7 @@
   .bg-pattern-tablet-dark {
     /* La función url() automáticamente resolverá la ruta al archivo SVG. */
     background-image: url("./pattern-background-tablet-dark.svg");
-    background-size: cover; /* O el valor que necesites */
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
@@ -46,7 +54,7 @@
   .bg-pattern-desktop-dark {
     /* La función url() automáticamente resolverá la ruta al archivo SVG. */
     background-image: url("./pattern-background-desktop-dark.svg");
-    background-size: cover; /* O el valor que necesites */
+    background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
     /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
