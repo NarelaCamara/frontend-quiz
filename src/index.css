@@ -1,13 +1,18 @@
 @import "tailwindcss";
 @tailwind utilities;
 
+:root {
+  background-color: #ebf0ff71;
+}
+
 @layer components {
   .bg-pattern {
     /* La función url() automáticamente resolverá la ruta al archivo SVG. */
     background-image: url("./pattern-background-mobile-light.svg");
     background-size: contain;
     background-repeat: no-repeat;
-    background-color: aquamarine;
+
+    /** background-color: aquamarine;
     /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
   }
 
@@ -18,7 +23,7 @@
       background-image: url("./pattern-background-tablet-light.svg");
       background-size: contain;
       background-repeat: no-repeat;
-      background-color: beige;
+      /* background-color: rgb(152, 152, 16);
       /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
     }
   }
@@ -28,9 +33,9 @@
     .bg-pattern {
       /* La función url() automáticamente resolverá la ruta al archivo SVG. */
       background-image: url("./pattern-background-desktop-light.svg");
-      background-size: contain;
+      background-size: cover;
       background-repeat: no-repeat;
-      background-color: brown;
+      /*  background-color: brown;
       /* Agrega cualquier otra propiedad de fondo de CSS que necesites */
     }
   }
