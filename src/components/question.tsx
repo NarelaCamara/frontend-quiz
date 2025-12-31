@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import type { IQuiz, IStep } from "../utils/types";
+import { useState } from "react";
+import type { IQuiz, IStateQuestion, IStep } from "../utils/types";
 import { AnswerState } from "../utils/utils";
 import { SectionQuestion } from "./sectionQuestion";
 import { SectionAnswer } from "./sectionAnswer";
@@ -14,12 +14,11 @@ export const Question = ({
   quiz: IQuiz;
   setStep: (step: IStep) => void;
   sumCorrect: (bool: boolean) => void;
-  }) => {
-  
-  const [stateQuestion, setStateQuestion] = useState({
+}) => {
+  const [stateQuestion, setStateQuestion] = useState<IStateQuestion>({
     state: AnswerState.SUBMITED,
     selectedAnswer: "",
-    timerFinished: false,
+    stateTime: "START",
   });
 
   const handleOptionClick = (answer: string) => {
@@ -30,21 +29,21 @@ export const Question = ({
   };
 
   const handleButtonNext = () => {
-    if (
-      stateQuestion.selectedAnswer !== "" &&
-      !stateQuestion.timerFinished &&
-      stateQuestion.state === AnswerState.SUBMITED
-    ) {
+    console.log("handleButtonNext");
+    if (stateQuestion.stateTime === "START") {
+      console.log("esta empezado");
       setStateQuestion({
         ...stateQuestion,
         state: AnswerState.NEXT,
+        stateTime: "PAUSE",
       });
-
       setStep({
         ...step,
         end: step.current === step.total,
       });
-    } else {
+    } else if (stateQuestion.stateTime === "PAUSE") {
+      console.log("esta pausado");
+
       sumCorrect(
         stateQuestion.selectedAnswer === quiz.questions[step.current - 1].answer
       );
@@ -55,19 +54,10 @@ export const Question = ({
       setStateQuestion({
         state: AnswerState.SUBMITED,
         selectedAnswer: "",
-        timerFinished: false,
+        stateTime: "START",
       });
     }
   };
-
-  useEffect(() => {
-    if (stateQuestion.timerFinished) {
-      setStateQuestion({
-        ...stateQuestion,
-        state: AnswerState.NEXT,
-      });
-    }
-  }, [stateQuestion]);
 
   return (
     <div className="flex flex-row justify-center gap-4 p-[2%]">

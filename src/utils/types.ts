@@ -22,4 +22,4 @@ export interface IStateQuestion {
   stateTime: ITimer;
 }
 
-export type ITimer = "START" | "END" | "PAUSE";
+export type ITimer = "START" | "PAUSE";
