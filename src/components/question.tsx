@@ -29,9 +29,7 @@ export const Question = ({
   };
 
   const handleButtonNext = () => {
-    console.log("handleButtonNext");
     if (stateQuestion.stateTime === "START") {
-      console.log("esta empezado");
       setStateQuestion({
         ...stateQuestion,
         state: AnswerState.NEXT,
@@ -42,8 +40,6 @@ export const Question = ({
         end: step.current === step.total,
       });
     } else if (stateQuestion.stateTime === "PAUSE") {
-      console.log("esta pausado");
-
       sumCorrect(
         stateQuestion.selectedAnswer === quiz.questions[step.current - 1].answer
       );

@@ -1,30 +1,47 @@
 import { useState, useEffect, useRef } from "react";
 import type { IStateQuestion } from "../utils/types";
+import { AnswerState } from "../utils/utils";
 
 export const Timer = ({
   time,
   stateQuestion,
+  setStateQuestion,
 }: {
   time: number;
   stateQuestion: IStateQuestion;
   setStateQuestion: (state: IStateQuestion) => void;
 }) => {
   const [segundos, setSegundos] = useState<number>(0);
+
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   useEffect(() => {
     if (stateQuestion.stateTime === "START") {
-       setSegundos(0);
+      setSegundos(0);
       timerRef.current = setInterval(() => {
         setSegundos((s) => s + 1);
       }, 1000);
-    } else if (stateQuestion.stateTime === "PAUSE" || time === segundos) {
-      console.log("pausa");
+    } else if (stateQuestion.stateTime === "PAUSE") {
+      setStateQuestion({
+        state: AnswerState.NEXT,
+        stateTime: "PAUSE",
+        selectedAnswer: "no selected",
+      });
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
   }, [stateQuestion.stateTime]);
+
+  useEffect(() => {
+    if (segundos === time) {
+      setStateQuestion({
+        state: AnswerState.NEXT,
+        stateTime: "PAUSE",
+        selectedAnswer: "no selected",
+      });
+    }
+  }, [segundos]);
 
   return (
     <div className="flex flex-col w-full gap-4 bg-gray-400 rounded-full p-0.5">
