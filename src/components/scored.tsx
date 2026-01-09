@@ -16,7 +16,7 @@ export const Scored = ({
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col justify-center gap-4 px-[2%]">
+    <div className="flex flex-col xl:flex-row justify-center gap-4 px-[2%]">
       <div>
         <h2 className="text-[40px] font-extralight text-[#313E51]">
           Quiz completed
@@ -24,9 +24,10 @@ export const Scored = ({
         <h1 className="text-[40px] font-medium">You scored...</h1>
       </div>
 
+      <div className="w-[128px]"></div>
       <div className="flex flex-col">
         <div
-          className={`p-12 bg-white  rounded-xl shadow-md  flex flex-col items-center   `}
+          className={`px-32 p-12 bg-white  rounded-xl shadow-md  flex flex-col items-center   `}
         >
           <div className="flex flex-row items-center justify-center gap-4 w-full">
             <Icon icon={quiz?.icon} title={quiz?.title} />

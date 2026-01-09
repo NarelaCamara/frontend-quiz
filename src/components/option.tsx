@@ -25,7 +25,7 @@ export const Option = ({
           );
         }
       }}
-      className={`mx-4 w-full  max-w-[700px] ${
+      className={`mx-4 w-full xl:min-w-[500px]  max-w-[700px] ${
         stateQuestion.state === AnswerState.SUBMITED &&
         stateQuestion.selectedAnswer === answer
           ? "border-2 border-violet-500"
