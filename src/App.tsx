@@ -35,7 +35,7 @@ function App() {
             {data.quizzes.map((item: { title: string; icon: string }) => (
               <div
                 onClick={() => handleQuizSelection(item.title)}
-                className={`w-[85vw] md:w-[60vw]  xl:min-w-[500px]  max-w-[700px] p-4 bg-white dark:bg-[#3B4D66] flex flex-row items-center rounded-xl shadow-md hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100 hover:dark:bg-[#3b4d66ad]`}
+                className={`w-[85vw] md:w-[60vw]  xl:min-w-[500px]  max-w-[700px] p-4 bg-white dark:bg-[#3B4D66] flex flex-row items-center rounded-xl shadow-md hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100 hover:dark:bg-[#3B4D66]`}
               >
                 <Icon icon={item.icon} title={item.title} />
                 <p className="text-[#313E51] dark:text-[#FFFFFF] text-[14px] font-semibold">

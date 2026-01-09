@@ -39,14 +39,14 @@ export const Option = ({
             : "border-2 border-red-500 text-white"
           : ""
       }
-       p-4  bg-white dark:bg-[#3b4d66ad] flex flex-row items-center rounded-xl shadow-md  ${
+       p-4  bg-white dark:bg-[#3B4D66] flex flex-row items-center rounded-xl shadow-md  ${
          stateQuestion.state === AnswerState.SUBMITED
-           ? "hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100 hover:dark:bg-[#3b4d66ad]"
+           ? "hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100 hover:dark:bg-[#3B4D66]"
            : ""
        } `}
     >
       <p
-        className={` bg-[#3b4d66ad]  bg-[#F4F6FA] text-[#626C7F]        
+        className={` dark:bg-[#3b4d66ad]  bg-[#F4F6FA] text-[#626C7F]        
           ${
             stateQuestion.state === AnswerState.SUBMITED &&
             stateQuestion.selectedAnswer === answer
