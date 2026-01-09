@@ -5,7 +5,7 @@ import icon_sun_dark from "../assets/icon-sun-dark.svg";
 export const ButtonDarkLightMode = () => {
   const [mode, setMode] = useState("dark");
   return (
-    <div className="flex flex-row-reverse pb-10">
+    <div className="flex flex-row-reverse">
       <div className={` ${mode === "dark" ? "" : "bg-black"} m-2`}>
         <button
           onClick={() => setMode("dark" === mode ? "light" : "dark")}

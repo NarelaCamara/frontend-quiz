@@ -22,7 +22,7 @@ export const SectionQuestion = ({
         <p>{quiz?.questions[step.current - 1].question}</p>
       </div>
 
-      <div className="w-full h-full flex items-center">
+      <div className="w-full flex items-center pt-10">
         <Timer
           time={10}
           stateQuestion={stateQuestion}

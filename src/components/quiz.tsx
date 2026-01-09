@@ -1,11 +1,11 @@
 import data from "../assets/data.json";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
-import { ButtonDarkLightMode } from "./button";
 import { Scored } from "./scored";
 import { Question } from "./question";
 import type { IQuiz, IStep } from "../utils/types";
-import { Icon } from "./icon";
+
+import { Nav } from "./nav";
 
 export const Quiz = () => {
   const [searchParams] = useSearchParams();
@@ -39,18 +39,9 @@ export const Quiz = () => {
     <>
       {!quiz && <div>...loading</div>}
       {quiz && (
-        <>
-          <div className="scale-90 sm:scale-100 max-w-7xl mx-auto pt-10 pb-10">
-            <div className="flex flex-row p-2 items-center gap-4">
-              <Icon icon={quiz.icon} title={quiz.title} />
-              <p className="text-[#313E51] text-[14px] xl:text-[18px] font-semibold">
-                {selection}
-              </p>
-              <div className="flex grow  justify-end">
-                <ButtonDarkLightMode />
-              </div>
-            </div>
-
+        <div className="">
+          <Nav title={quiz.title} icon={quiz.icon} />
+          <div className="scale-90 sm:scale-100 max-w-7xl mx-auto">
             {!step.end && (
               <Question
                 step={step}
@@ -64,7 +55,7 @@ export const Quiz = () => {
               <Scored score={score} quiz={quiz} step={step} setStep={setStep} />
             )}
           </div>
-        </>
+        </div>
       )}
     </>
   );
