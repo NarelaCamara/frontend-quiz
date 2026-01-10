@@ -48,8 +48,9 @@ export const Question = ({
         current: step.current + 1,
       });
       setStateQuestion({
+        ...stateQuestion,
         state: AnswerState.SUBMITED,
-        selectedAnswer: "",
+       
         stateTime: "START",
       });
     }

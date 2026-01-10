@@ -16,6 +16,26 @@ export const Option = ({
   stateQuestion: IStateQuestion;
   handleOptionClick: (answer: string) => void;
 }) => {
+  const IsCorrectAnswer = () => {
+    return (
+      answer === stateQuestion.selectedAnswer &&
+      correctAnswer === stateQuestion.selectedAnswer
+    );
+  };
+
+  const stateSubmitedSelectedAnswer = () => {
+    return (
+      stateQuestion.state === AnswerState.SUBMITED &&
+      stateQuestion.selectedAnswer === answer
+    );
+  };
+
+  const stateNextSelectedAnswerIsCorrect = () => {
+    return (
+      stateQuestion.selectedAnswer === answer &&
+      correctAnswer === stateQuestion.selectedAnswer
+    );
+  };
   return (
     <div
       onClick={() => {
@@ -26,15 +46,14 @@ export const Option = ({
         }
       }}
       className={`mx-4 w-full xl:min-w-[500px]  max-w-[700px] ${
-        stateQuestion.state === AnswerState.SUBMITED &&
-        stateQuestion.selectedAnswer === answer
-          ? "border-2 border-violet-500"
+        stateSubmitedSelectedAnswer()
+          ? "border-2 border-violet-500 bg-violet-500 text-white"
           : ""
       }
       ${
         stateQuestion.state === AnswerState.NEXT &&
         stateQuestion.selectedAnswer === answer
-          ? correctAnswer === stateQuestion.selectedAnswer
+          ? IsCorrectAnswer()
             ? "border-2 border-green-500 text-white"
             : "border-2 border-red-500 text-white"
           : ""
@@ -46,17 +65,12 @@ export const Option = ({
        } `}
     >
       <p
-        className={` dark:bg-[#3b4d66ad]  bg-[#F4F6FA] text-[#626C7F]        
+        className={` dark:bg-[#3b4d66ad]  bg-[#F4F6FA] text-[#626C7F]       
           ${
-            stateQuestion.state === AnswerState.SUBMITED &&
-            stateQuestion.selectedAnswer === answer
-              ? "bg-violet-500 text-white"
-              : ""
-          }
-          ${
-            stateQuestion.state === AnswerState.NEXT &&
-            stateQuestion.selectedAnswer === answer
-              ? correctAnswer === stateQuestion.selectedAnswer
+            stateQuestion.state === AnswerState.SUBMITED
+              ? ""
+              : stateNextSelectedAnswerIsCorrect()
+              ? correctAnswer === answer
                 ? "bg-green-500 text-white"
                 : "bg-red-500 text-white"
               : ""
@@ -75,7 +89,7 @@ export const Option = ({
 
       {stateQuestion.state === AnswerState.NEXT &&
         (correctAnswer === answer ||
-          stateQuestion.selectedAnswer === answer) && (
+          answer === stateQuestion.selectedAnswer) && (
           <img
             src={correctAnswer === answer ? iconSuccess : iconError}
             alt="icon"

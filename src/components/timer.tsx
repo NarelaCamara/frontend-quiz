@@ -23,19 +23,21 @@ export const Timer = ({
       }, 1000);
     } else if (stateQuestion.stateTime === "PAUSE") {
       setStateQuestion({
+        ...stateQuestion,
         state: AnswerState.NEXT,
         stateTime: "PAUSE",
-        selectedAnswer: "no selected",
       });
     }
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stateQuestion.stateTime]);
 
   useEffect(() => {
     if (segundos === time) {
       setStateQuestion({
+        ...stateQuestion,
         state: AnswerState.NEXT,
         stateTime: "PAUSE",
         selectedAnswer: "no selected",
