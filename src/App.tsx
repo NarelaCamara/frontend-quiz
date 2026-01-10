@@ -2,9 +2,12 @@ import data from "./assets/data.json";
 import { useNavigate } from "react-router";
 import { Icon } from "./components/icon";
 import { Nav } from "./components/nav";
+import { useQuizServer } from "./lib/quiz-domain";
 
 function App() {
   const navigate = useNavigate();
+
+  const { getIconServer } = useQuizServer();
 
   const handleQuizSelection = (quizTitle: string) => {
     const safeString = encodeURIComponent(quizTitle);
@@ -37,7 +40,7 @@ function App() {
                 onClick={() => handleQuizSelection(item.title)}
                 className={`w-[85vw] md:w-[60vw]  xl:min-w-[500px]  max-w-[700px] p-4 bg-white dark:bg-[#3B4D66] flex flex-row items-center rounded-xl shadow-md hover:scale-105 transition-transform duration-300 ease-in-out cursor-pointer   hover:bg-gray-100 hover:dark:bg-[#3B4D66]`}
               >
-                <Icon icon={item.icon} title={item.title} />
+                <Icon icon={getIconServer(item.title)} title={item.title} />
                 <p className="text-[#313E51] dark:text-[#FFFFFF] text-[14px] font-semibold">
                   {item.title}
                 </p>

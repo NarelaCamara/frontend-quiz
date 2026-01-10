@@ -5,8 +5,8 @@ export const Nav = ({
   icon = "",
   title = "",
 }: {
-  icon?: string;
-  title?: string;
+  icon?: string | undefined;
+  title?: string | undefined;
 }) => {
   return (
     <div className="flex flex-row p-2 items-center">
