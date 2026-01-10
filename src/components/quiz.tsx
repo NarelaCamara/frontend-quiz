@@ -10,7 +10,7 @@ import Spinner from "./spinner";
 import ErrorScreen from "./error";
 
 export const Quiz = () => {
-  const { getQuizSelected } = useQuizServer();
+  const { getQuizSelected, getIconServer } = useQuizServer();
   const [searchParams] = useSearchParams();
   const selection = searchParams.get("selection");
   const [stateQuiz, setStateQuiz] = useState("");
@@ -47,7 +47,10 @@ export const Quiz = () => {
 
   return (
     <div className="">
-      <Nav title={quiz?.title || ""} icon={quiz?.icon || ""} />
+      <Nav
+        title={quiz?.title || ""}
+        icon={selection ? getIconServer(selection) : ""}
+      />
       {stateQuiz === "error" && <ErrorScreen />}
       {stateQuiz === "loading" && <Spinner />}
       {stateQuiz === "ok" && quiz && (
