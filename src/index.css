@@ -19,13 +19,13 @@
 
   /* mobile  */
   .bg-pattern {
-    background-image: url("./pattern-background-mobile-light.svg");
+    background-image: url("/pattern-background-mobile-light.svg");
     background-size: auto !important;
     background-repeat: no-repeat;
   }
 
   .dark .bg-pattern {
-    background-image: url("./pattern-background-mobile-dark.svg");
+    background-image: url("/pattern-background-mobile-dark.svg");
     background-size: auto !important;
     background-repeat: no-repeat;
   }
@@ -33,13 +33,13 @@
   /* Tablet */
   @media (min-width: 768px) {
     .bg-pattern {
-      background-image: url("./pattern-background-tablet-light.svg");
+      background-image: url("/pattern-background-tablet-light.svg");
       background-size: auto !important;
       background-repeat: no-repeat;
     }
 
     .dark .bg-pattern {
-      background-image: url("./pattern-background-tablet-dark.svg");
+      background-image: url("/pattern-background-tablet-dark.svg");
       background-size: auto !important;
       background-repeat: no-repeat;
     }
@@ -48,13 +48,13 @@
   /* Desktop (desde 1024px) */
   @media (min-width: 1024px) {
     .bg-pattern {
-      background-image: url("./pattern-background-desktop-light.svg");
+      background-image: url("/pattern-background-desktop-light.svg");
       background-size: cover !important;
       background-repeat: no-repeat;
     }
 
     .dark .bg-pattern {
-      background-image: url("./pattern-background-desktop-dark.svg");
+      background-image: url("/pattern-background-desktop-dark.svg");
       background-size: cover !important;
       background-repeat: no-repeat;
     }
