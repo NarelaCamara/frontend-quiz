@@ -2,7 +2,7 @@ import data from "./assets/data.json";
 import { useNavigate } from "react-router";
 import { Icon } from "./components/icon";
 import { Nav } from "./components/nav";
-import { useQuizServer } from "./lib/domain/quiz-domain";
+import { useQuizServer } from "./lib/quiz-domain";
 
 function App() {
   const navigate = useNavigate();

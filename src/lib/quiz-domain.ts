@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { IQuiz } from "../../utils/types";
+import type { IQuiz } from "../utils/types";
 
 export const useQuizServer = () => {
   const url_server = import.meta.env.VITE_APP_URL;

@@ -5,7 +5,7 @@ import { Question } from "./question";
 import type { IQuiz, IStep } from "../utils/types";
 
 import { Nav } from "./nav";
-import { useQuizServer } from "../lib/domain/quiz-domain";
+import { useQuizServer } from "../lib/quiz-domain";
 import Spinner from "./spinner";
 import ErrorScreen from "./error";
 
