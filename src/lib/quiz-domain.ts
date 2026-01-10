@@ -14,9 +14,18 @@ export const useQuizServer = () => {
     const quizzes = await instance
       .get(`quizzes/quiz/${selection}`)
       .then((result) => result.data)
-
       .catch(() => null);
 
+    return quizzes;
+  };
+
+  const getQuizzes = async (): Promise<Array<string>> => {
+    const quizzes = await instance
+      .get(`quizzes/all`)
+      .then((result) => result.data)
+      .catch(() => null);
+
+    console.log("quizzes", quizzes);
     return quizzes;
   };
 
@@ -26,5 +35,5 @@ export const useQuizServer = () => {
       .trim()}.svg`;
   };
 
-  return { getQuizSelected, getIconServer };
+  return { getQuizSelected, getIconServer, getQuizzes };
 };
