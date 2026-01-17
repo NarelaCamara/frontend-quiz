@@ -6,11 +6,13 @@ export const Scored = ({
   score,
   quiz,
   step,
+  icon,
   setStep,
 }: {
   score: number;
   quiz: IQuiz;
   step: IStep;
+  icon: string;
   setStep: (step: IStep) => void;
 }) => {
   const navigate = useNavigate();
@@ -32,7 +34,7 @@ export const Scored = ({
           className={`px-32 p-12 bg-white dark:bg-[#3B4D66] rounded-xl shadow-md  flex flex-col items-center   `}
         >
           <div className="flex flex-row items-center justify-center gap-4 w-full">
-            <Icon icon={quiz?.icon} title={quiz?.title} />
+            <Icon icon={icon} title={quiz?.title} />
             <p className="text-[#313E51] dark:text-[#FFFFFF] text-[28px] font-medium">
               {quiz.title}
             </p>

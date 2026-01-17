@@ -65,7 +65,13 @@ export const Quiz = () => {
           )}
 
           {step.end && (
-            <Scored score={score} quiz={quiz} step={step} setStep={setStep} />
+            <Scored
+              score={score}
+              quiz={quiz}
+              step={step}
+              setStep={setStep}
+              icon={selection ? getIconServer(selection) : ""}
+            />
           )}
         </div>
       )}
